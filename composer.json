@@ -1,0 +1,19 @@
+{
+    "name": "jared/aa-meeting-search-json-rpc",
+    "description": "A search script for alcoholics anonymous meetings",
+    "authors": [
+        {
+            "name": "Jared Kuemmerle",
+            "email": "jared.kuemmerle@yahoo.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "graze/guzzle-jsonrpc": "^3.2",
+        "mjaschen/phpgeo": "^2.0",
+        "phpunit/phpunit": "^6.5",
+        "vlucas/phpdotenv": "^2.4"
+    }
+}

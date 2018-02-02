@@ -1,0 +1,84 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "id": 60954,
+      "time_id": 15455,
+      "address_id": 25475,
+      "type": "MeetingItem",
+      "details": "Format: Contact: Adriana - 619-397-7010",
+      "meeting_type": "OA",
+      "meeting_name": "Chula Vista Presbyterian Church",
+      "language": "English",
+      "raw_address": "Chula Vista Presbyterian Church, 940 Hilltop Drive, Chula Vista, , CA",
+      "location": "Chula Vista Presbyterian Church",
+      "address": {
+        "id": 25475,
+        "street": "940 Hilltop Dr",
+        "zip": "91911",
+        "city": "Chula Vista",
+        "state_abbr": "CA",
+        "lat": "32.623718461538",
+        "lng": "-117.05943523077"
+      },
+      "time": {
+        "id": 15455,
+        "day": "monday",
+        "hour": 1930
+      }
+    },
+    {
+      "id": 60956,
+      "time_id": 15457,
+      "address_id": 25477,
+      "type": "MeetingItem",
+      "details": "Format: Contact: Carl - 858-755-4245",
+      "meeting_type": "OA",
+      "meeting_name": "Del Mar Hot House",
+      "language": "English",
+      "raw_address": "Del Mar Hot House, 13934 Recuerdo Dr, Del Mar, CA 92014",
+      "location": "Del Mar Hot House",
+      "address": {
+        "id": 25477,
+        "street": "13934 Recuerdo Dr",
+        "zip": "92014",
+        "city": "Del Mar",
+        "state_abbr": "CA",
+        "lat": "32.9509082",
+        "lng": "-117.254483"
+      },
+      "time": {
+        "id": 15457,
+        "day": "tuesday",
+        "hour": 1430
+      }
+    },
+    {
+      "id": 60955,
+      "time_id": 15414,
+      "address_id": 25476,
+      "type": "MeetingItem",
+      "details": "Format: Contact: Rosalinda - 619-992-5974",
+      "meeting_type": "OA",
+      "meeting_name": "Scripps Hospital",
+      "language": "English",
+      "raw_address": "Scripps Hospital, 499 H St, Chula Vista, , CA",
+      "location": "Scripps Hospital",
+      "address": {
+        "id": 25476,
+        "street": "",
+        "zip": "91914",
+        "city": "Chula Vista",
+        "state_abbr": "CA",
+        "lat": "32.656159",
+        "lng": "-116.966139"
+      },
+      "time": {
+        "id": 15414,
+        "day": "tuesday",
+        "hour": 1900
+      }
+    }
+  ]
+}
