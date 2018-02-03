@@ -10,8 +10,8 @@ use Location\Distance\Vincenty;
  * Class MeetingCollection
  * @package Meeting
  */
-class MeetingCollection extends ArrayObject
-{
+class MeetingCollection extends ArrayObject {
+
     /**
      * Meeting constructor.
      * @param array|null $data

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Meeting;
 
 use Geocoder\Query\GeocodeQuery;
@@ -9,8 +8,8 @@ use Geocoder\StatefulGeocoder;
 use Http\Adapter\Guzzle6\Client as GuzzleClient;
 use file;
 
-class AttendeeParser
-{
+class AttendeeParser {
+
     /**
      * @var StatefulGeocoder
      */
@@ -45,7 +44,7 @@ class AttendeeParser
                     list($name, $email, $preferredDay, $addressString) = $data;
                     $attendee = new Attendee(trim($name), trim($email), trim($preferredDay));
                     if ($addressString) {
-                        if ($address = $this->getGeoCodedAddress($addressString)) {
+                        if ($address = $this->getGeoCodedAddress(trim($addressString))) {
                             $attendee->setAddress($address);
                         }
                     }

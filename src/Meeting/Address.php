@@ -6,8 +6,8 @@ namespace Meeting;
  * Class Address
  * @package Meeting
  */
-class Address
-{
+class Address {
+
     /**
      * @var integer
      */
@@ -62,128 +62,128 @@ class Address
     /**
      * @return mixed
      */
-    public function getId()
-    {
+    public function getId() {
+
         return $this->id;
     }
 
     /**
      * @param mixed $id
      */
-    public function setId($id)
-    {
+    public function setId($id) {
+
         $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getName()
-    {
+    public function getName() {
+
         return $this->name;
     }
 
     /**
      * @param mixed $name
      */
-    public function setName($name)
-    {
+    public function setName($name) {
+
         $this->name = $name;
     }
 
     /**
      * @return mixed
      */
-    public function getStreet()
-    {
+    public function getStreet() {
+
         return $this->street;
     }
 
     /**
      * @param mixed $street
      */
-    public function setStreet($street)
-    {
+    public function setStreet($street) {
+
         $this->street = $street;
     }
 
     /**
      * @return mixed
      */
-    public function getZip()
-    {
+    public function getZip() {
+
         return $this->zip;
     }
 
     /**
      * @param mixed $zip
      */
-    public function setZip($zip)
-    {
+    public function setZip($zip) {
+
         $this->zip = $zip;
     }
 
     /**
      * @return mixed
      */
-    public function getCity()
-    {
+    public function getCity() {
+
         return $this->city;
     }
 
     /**
      * @param mixed $city
      */
-    public function setCity($city)
-    {
+    public function setCity($city) {
+
         $this->city = $city;
     }
 
     /**
      * @return mixed
      */
-    public function getStateAbbr()
-    {
+    public function getStateAbbr() {
+
         return $this->state_abbr;
     }
 
     /**
      * @param mixed $state_abbr
      */
-    public function setStateAbbr($state_abbr)
-    {
+    public function setStateAbbr($state_abbr) {
+
         $this->state_abbr = $state_abbr;
     }
 
     /**
      * @return mixed
      */
-    public function getLat()
-    {
+    public function getLat() {
+
         return $this->lat;
     }
 
     /**
      * @param mixed $lat
      */
-    public function setLat($lat)
-    {
+    public function setLat($lat) {
+
         $this->lat = $lat;
     }
 
     /**
      * @return mixed
      */
-    public function getLng()
-    {
+    public function getLng() {
+
         return $this->lng;
     }
 
     /**
      * @param mixed $lng
      */
-    public function setLng($lng)
-    {
+    public function setLng($lng) {
+
         $this->lng = $lng;
     }
 

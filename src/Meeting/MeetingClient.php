@@ -35,14 +35,17 @@ class MeetingClient {
     }
 
     /**
+     * Search
+     * @param string $city
+     * @param string $stateAbbrev
      * @return MeetingCollection
      */
-    public function search() {
+    public function search(string $city, string $stateAbbrev) {
 
         try {
             $params = [
                 [
-                    [ 'state_abbr' => 'CA', 'city' => 'San Diego' ],
+                    [ 'state_abbr' => $stateAbbrev, 'city' => $city ],
                 ],
             ];
             $request = $this->client->request(1, 'byLocals', $params);

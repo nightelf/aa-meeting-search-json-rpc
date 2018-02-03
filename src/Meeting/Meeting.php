@@ -6,8 +6,8 @@ namespace Meeting;
  * Class Meeting
  * @package Meeting
  */
-class Meeting
-{
+class Meeting {
+
     /**
      * @var int
      */
@@ -62,112 +62,112 @@ class Meeting
     /**
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
+
         return $this->id;
     }
 
     /**
      * @param int $id
      */
-    public function setId($id)
-    {
+    public function setId($id) {
+
         $this->id = $id;
     }
 
     /**
      * @return string
      */
-    public function getType()
-    {
+    public function getType() {
+
         return $this->type;
     }
 
     /**
      * @param string $type
      */
-    public function setType($type)
-    {
+    public function setType($type) {
+
         $this->type = $type;
     }
 
     /**
      * @return mixed
      */
-    public function getDetails()
-    {
+    public function getDetails() {
+
         return $this->details;
     }
 
     /**
      * @param mixed $details
      */
-    public function setDetails($details)
-    {
+    public function setDetails($details) {
+
         $this->details = $details;
     }
 
     /**
      * @return mixed
      */
-    public function getMeetingType()
-    {
+    public function getMeetingType() {
+
         return $this->meeting_type;
     }
 
     /**
      * @param mixed $meeting_type
      */
-    public function setMeetingType($meeting_type)
-    {
+    public function setMeetingType($meeting_type) {
+
         $this->meeting_type = $meeting_type;
     }
 
     /**
      * @return mixed
      */
-    public function getMeetingName()
-    {
+    public function getMeetingName() {
+
         return $this->meeting_name;
     }
 
     /**
      * @param mixed $meeting_name
      */
-    public function setMeetingName($meeting_name)
-    {
+    public function setMeetingName($meeting_name) {
+
         $this->meeting_name = $meeting_name;
     }
 
     /**
      * @return mixed
      */
-    public function getLanguage()
-    {
+    public function getLanguage() {
+
         return $this->language;
     }
 
     /**
      * @param mixed $language
      */
-    public function setLanguage($language)
-    {
+    public function setLanguage($language) {
+
         $this->language = $language;
     }
 
     /**
      * @return Address
      */
-    public function getAddress(): Address
-    {
+    public function getAddress(): Address {
+
         return $this->address;
     }
 
     /**
      * @param Address $address
      */
-    public function setAddress(Address $address)
-    {
+    public function setAddress(Address $address) {
+
         $this->address = $address;
     }
 
@@ -175,16 +175,16 @@ class Meeting
     /**
      * @return Time
      */
-    public function getTime(): Time
-    {
+    public function getTime(): Time {
+
         return $this->time;
     }
 
     /**
      * @param Time $time
      */
-    public function setTime(Time $time)
-    {
+    public function setTime(Time $time) {
+
         $this->time = $time;
     }
 

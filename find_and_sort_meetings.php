@@ -26,7 +26,7 @@ $attendeeCollection = $attendeeParser->parseCsvFile($argv[1]);
 
 // Create the client
 $meetingClient = MeetingClient::build($user, $pass);
-$meetingCollection = $meetingClient->search();
+$meetingCollection = $meetingClient->search('San Diego', 'CA');
 $attendeeMailer = AttendeeMailer::build($templatePath, [
     'cache' => $templateCachePath,
 ]);

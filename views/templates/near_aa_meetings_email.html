@@ -7,20 +7,24 @@
 <body>
     <h3>Dear {{ attendee.getName }},</h3>
     <p>Here are some nearby meetings you may wish to attend:</p>
-    <table id="meetings">
+    <table id="meetings" style="text-align: left;">
         <thead>
             <tr>
-                <th>Meeting</th>
-                <th>Day / Time</th>
-                <th>Address</th>
+                <th style="padding: 5px 15px">Meeting</th>
+                <th style="padding: 5px 15px">Day</th>
+                <th style="padding: 5px 15px">Time</th>
+                <th style="padding: 5px 15px">Address</th>
+                <th style="padding: 5px 15px">Distance (miles)</th>
             </tr>
         </thead>
         <tbody>
             {% for meeting in meeting_collection %}
             <tr>
-                <td>{{ meeting.getMeetingName }}</td>
-                <td>{{ meeting.getTime.getDay }} @{{ meeting.getTime.getHour }}</td>
-                <td>{{ meeting.getAddress.renderAddress }}</td>
+                <td style="padding: 5px 15px">{{ meeting.getMeetingName }}</td>
+                <td style="padding: 5px 15px">{{ meeting.getTime.getDay }}</td>
+                <td style="padding: 5px 15px">{{ meeting.getTime.getTimeOfDay }}</td>
+                <td style="padding: 5px 15px">{{ meeting.getAddress.renderAddress }}</td>
+                <td style="padding: 5px 15px">{{ get_distance(attendee.getAddress, meeting.getAddress) }}</td>
             </tr>
             {% endfor %}
         </tbody>
