@@ -1,5 +1,5 @@
 # aa-meeting-search-json-rpc
-A library / command line utility that searches AA meetings and emails them to people.
+A library / command line utility that searches AA meetings for a city, filters them by day, sorts them by distance to a person's address, and emails the meeting info to the person.
 
 ## Instructions:
 1. PHP 7 is required. Please install, if necessary.
