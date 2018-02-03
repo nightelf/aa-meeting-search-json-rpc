@@ -25,6 +25,9 @@ if (count($argv) > 4) {
 }
 
 $attendeeCsvPath = $argv[1];
+if (!is_file($attendeeCsvPath)) {
+    exit("\n Path  '{$attendeeCsvPath}' is not a file.\n");
+}
 $searchCity = $argv[2];
 $searchState = $argv[3];
 
