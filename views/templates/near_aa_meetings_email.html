@@ -21,7 +21,7 @@
             {% for meeting in meeting_collection %}
             <tr>
                 <td style="padding: 5px 15px">{{ meeting.getMeetingName }}</td>
-                <td style="padding: 5px 15px">{{ meeting.getTime.getDay }}</td>
+                <td style="padding: 5px 15px">{{ meeting.getTime.getDay|capitalize }}</td>
                 <td style="padding: 5px 15px">{{ meeting.getTime.getTimeOfDay }}</td>
                 <td style="padding: 5px 15px">{{ meeting.getAddress.renderAddress }}</td>
                 <td style="padding: 5px 15px">{{ get_distance(attendee.getAddress, meeting.getAddress) }}</td>
