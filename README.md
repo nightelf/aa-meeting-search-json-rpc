@@ -4,7 +4,7 @@ A library / command line utility that searches AA meetings and emails them to pe
 ## Instructions:
 1. PHP 7 is required. Please install, if necessary.
 2. git clone https://github.com/nightelf/aa-meeting-search-json-rpc.git
-3. Create a .env file in the root dir with the following keys: MEETINGS_API_USER, MEETINGS_API_PASSWORD. See .env.example file.
+3. Create a .env file in the root dir with the following keys: MEETINGS_API_USER, MEETINGS_API_PASSWORD. For reference, see the .env.example file.
 4. Create an attendees csv file with each line having: \<Full name\>,\<email address\>,\<preferred meeting day\>,"\<address\>". For reference, see the attendees.csv.example file.
 
    Example:
