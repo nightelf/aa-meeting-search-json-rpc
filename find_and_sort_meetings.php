@@ -3,13 +3,16 @@
 require_once "./vendor/autoload.php";
 
 use Dotenv\Dotenv;
-use Meeting\Address;
+use Meeting\AttendeeParser;
 use Meeting\MeetingClient;
+use Meeting\AttendeeMailer;
 
 $dotenv = new Dotenv(__DIR__);
 $dotenv->load();
 $user = getenv('MEETINGS_API_USER');
 $pass = getenv('MEETINGS_API_PASSWORD');
+$templatePath = __DIR__ . '/views/templates/';
+$templateCachePath = $templatePath . 'cache/';
 
 if (empty($user)) {
     exit("Must define MEETINGS_API_USER in .env file");
@@ -17,21 +20,18 @@ if (empty($user)) {
     exit("Must define MEETINGS_API_PASSWORD in .env file");
 }
 
-$resource = 'tools.referralsolutionsgroup.com/meetings-api/v1/';
-$scheme = 'http://';
-$url = $scheme . $user . ':' . $pass . '@' . $resource;
+
+$attendeeParser = AttendeeParser::build();
+$attendeeCollection = $attendeeParser->parseCsvFile($argv[1]);
 
 // Create the client
 $meetingClient = MeetingClient::build($user, $pass);
 $meetingCollection = $meetingClient->search();
+$attendeeMailer = AttendeeMailer::build($templatePath, [
+    'cache' => $templateCachePath,
+]);
 
-$referenceAddress = new Address();
-$referenceAddress->setLat('32.7107335');
-$referenceAddress->setLng('-117.1629242');
-$filteredMeetingCollection = $meetingCollection->filterByDay('Monday');
-$filteredMeetingCollection->sortByDistance($referenceAddress);
+$attendeeMailer->emailAttendees($attendeeCollection, $meetingCollection);
 
-print_r($filteredMeetingCollection);
-// Send the request
 
 

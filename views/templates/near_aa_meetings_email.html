@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Attendee Email</title>
+</head>
+<body>
+    <h3>Dear {{ attendee.getName }},</h3>
+    <p>Here are some nearby meetings you may wish to attend:</p>
+    <table id="meetings">
+        <thead>
+            <tr>
+                <th>Meeting</th>
+                <th>Day / Time</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meeting in meeting_collection %}
+            <tr>
+                <td>{{ meeting.getMeetingName }}</td>
+                <td>{{ meeting.getTime.getDay }} @{{ meeting.getTime.getHour }}</td>
+                <td>{{ meeting.getAddress.renderAddress }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

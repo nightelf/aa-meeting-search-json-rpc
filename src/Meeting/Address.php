@@ -187,6 +187,24 @@ class Address
         $this->lng = $lng;
     }
 
+    public function renderAddress() {
+
+        $address = '';
+        if ($this->street) {
+            $address .= $this->street;
+        }
+        if ($this->city) {
+            $address .= ($address ? ', ' : '')  . $this->city ;
+        }
+        if ($this->state_abbr) {
+            $address .= ($address ? ', ' : '')  . $this->state_abbr ;
+        }
+        if ($this->zip) {
+            $address .= ($address ? ' ' : '')  . $this->zip ;
+        }
+        return $address;
+    }
+
     /**
      * @param array $data
      * @return Address
