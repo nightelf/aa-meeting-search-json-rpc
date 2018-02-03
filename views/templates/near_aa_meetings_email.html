@@ -6,7 +6,7 @@
 </head>
 <body>
     <h3>Dear {{ attendee.getName }},</h3>
-    <p>Here are some nearby meetings you may wish to attend:</p>
+    <p>Here are some meetings in the {{ meeting_collection.getCity|ucwords }} area you may wish to attend:</p>
     <table id="meetings" style="text-align: left;">
         <thead>
             <tr>

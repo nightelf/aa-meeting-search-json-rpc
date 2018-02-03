@@ -16,7 +16,7 @@ class MeetingCollectionTest extends TestCase
 
         $jsonString = file_get_contents(__dir__ . '/MeetingResponseSample.json');
         $responseArray = json_decode($jsonString, true);
-        $meetingCollection = new MeetingCollection($responseArray['result']);
+        $meetingCollection = new MeetingCollection($responseArray['result'], 'San Diego', 'CA');
         $this->doFillAsserts($meetingCollection);
     }
 
@@ -29,6 +29,8 @@ class MeetingCollectionTest extends TestCase
         $responseArray = json_decode($jsonString, true);
         $meetingCollection = new MeetingCollection();
         $meetingCollection->fillFromArray($responseArray['result']);
+        $meetingCollection->setCity('San Diego');
+        $meetingCollection->setStateAbbrev('CA');
         $this->doFillAsserts($meetingCollection);
     }
 
@@ -39,7 +41,7 @@ class MeetingCollectionTest extends TestCase
 
         $jsonString = file_get_contents(__dir__ . '/MeetingResponseSample.json');
         $responseArray = json_decode($jsonString, true);
-        $meetingCollection = new MeetingCollection($responseArray['result']);
+        $meetingCollection = new MeetingCollection($responseArray['result'], 'San Diego', 'CA');
         $filteredMeetingCollection = $meetingCollection->filterByDay('Monday');
 
         $this->assertEquals(1, count($filteredMeetingCollection));
@@ -56,7 +58,7 @@ class MeetingCollectionTest extends TestCase
         $referenceAddress->setLng('-117.1629242');
         $jsonString = file_get_contents(__dir__ . '/MeetingResponseSample.json');
         $responseArray = json_decode($jsonString, true);
-        $meetingCollection = new MeetingCollection($responseArray['result']);
+        $meetingCollection = new MeetingCollection($responseArray['result'], 'San Diego', 'CA');
         $meetingCollection->sortByDistance($referenceAddress);
 
         // 8.51 miles from reference

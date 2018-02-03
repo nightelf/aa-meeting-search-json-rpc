@@ -39,7 +39,7 @@ class AttendeeMailerTest extends TestCase
 
         $jsonString = file_get_contents(__dir__ . '/MeetingResponseSample.json');
         $responseArray = json_decode($jsonString, true);
-        $meetingCollection = new MeetingCollection($responseArray['result']);
+        $meetingCollection = new MeetingCollection($responseArray['result'], 'San diego', 'CA');
         $meetingCollection->sortByDistance($referenceAddress);
 
         $attendeeMailer = AttendeeMailer::build(self::TEMPLATE_PATH, [
@@ -51,7 +51,8 @@ class AttendeeMailerTest extends TestCase
         $this->assertContains('Yoda', $html);
         $this->assertContains("Chula Vista Presbyterian Church", $html);
         $this->assertContains("13934 Recuerdo Dr, Del Mar, CA 92014", $html);
-        $this->assertContains('tuesday', $html);
-        $this->assertContains('1900', $html);
+        $this->assertContains('Tuesday', $html);
+        $this->assertContains('7:00 PM', $html);
+        $this->assertContains('San Diego area', $html);
     }
 }

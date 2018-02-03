@@ -2,10 +2,15 @@
 
 namespace Meeting;
 
+use Meeting\TwigFunction\UcWords;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use Meeting\TwigFunction\GetDistance;
 
+/**
+ * Class AttendeeMailer
+ * @package Meeting
+ */
 class AttendeeMailer {
 
     /**
@@ -16,7 +21,7 @@ class AttendeeMailer {
     /**
      * @var string
      */
-    const EMAIL_SUBJECT = 'Some Alcoholics Anonymous meetings nearby';
+    const EMAIL_SUBJECT = 'Some Alcoholics Anonymous meetings in the %s area';
 
     /**
      * @var Twig_Environment
@@ -39,6 +44,7 @@ class AttendeeMailer {
      */
     public function emailAttendees(AttendeeCollection $attendeeCollection, MeetingCollection $meetingCollection) {
 
+        // @todo clean headers up
         $headers = 'From: no-reply@example.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion() . "\r\n" .
             'MIME-Version: 1.0' . "\r\n" .
@@ -49,7 +55,9 @@ class AttendeeMailer {
             $filteredMeetingCollection = $meetingCollection->filterByDay($attendee->getPreferredDay());
             $filteredMeetingCollection->sortByDistance($attendee->getAddress());
             $html = $this->renderTemplate($attendee, $filteredMeetingCollection);
-            mail($attendee->getEmail(), self::EMAIL_SUBJECT, $html, $headers);
+
+            // Why php mail? Because it just works without configuration.
+            mail($attendee->getEmail(), sprintf(self::EMAIL_SUBJECT, ucwords($meetingCollection->getCity())), $html, $headers);
         }
     }
 
@@ -76,6 +84,7 @@ class AttendeeMailer {
         $loader = new Twig_Loader_Filesystem($templatePath);
         $twig = new Twig_Environment($loader, $options);
         $twig->addFunction((new GetDistance)->getFunction());
+        $twig->addFilter((new UcWords())->getFilter());
         return new self($twig);
     }
 }

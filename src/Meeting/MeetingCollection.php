@@ -13,14 +13,60 @@ use Location\Distance\Vincenty;
 class MeetingCollection extends ArrayObject {
 
     /**
+     * @var string
+     */
+    private $city;
+
+    /**
+     * @var string
+     */
+    private $stateAbbrev;
+
+    /**
      * Meeting constructor.
      * @param array|null $data
+     * @param string $city
+     * @param string $stateAbbrev
      */
-    public function __construct(array $data = null) {
+    public function __construct(array $data = null, $city = null, $stateAbbrev = null) {
 
         if ($data) {
             $this->fillFromArray($data);
         }
+        $this->city = $city;
+        $this->stateAbbrev = $stateAbbrev;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string {
+
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city) {
+
+        $this->city = $city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStateAbbrev(): string {
+
+        return $this->stateAbbrev;
+    }
+
+    /**
+     * @param string $stateAbbrev
+     */
+    public function setStateAbbrev(string $stateAbbrev) {
+
+        $this->stateAbbrev = $stateAbbrev;
     }
 
     /**
@@ -42,6 +88,8 @@ class MeetingCollection extends ArrayObject {
 
         $dayOfWeek = strtolower($dayOfWeek);
         $filteredCollection = new static();
+        $filteredCollection->setCity($this->city);
+        $filteredCollection->setStateAbbrev($this->stateAbbrev);
         foreach ($this as $meeting) {
             if ($dayOfWeek == $meeting->getTime()->getDay()) {
 

@@ -53,7 +53,7 @@ class MeetingClient {
             $response = $this->client->send($request);
 
             $result = $response->getRpcResult();
-            $meetingCollection = new MeetingCollection($result);
+            $meetingCollection = new MeetingCollection($result, $city, $stateAbbrev);
             return $meetingCollection;
         } catch (RequestException $e) {
             die($e->getResponse()->getRpcErrorMessage());
