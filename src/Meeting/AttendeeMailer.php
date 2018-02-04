@@ -44,6 +44,10 @@ class AttendeeMailer {
      */
     public function emailAttendees(AttendeeCollection $attendeeCollection, MeetingCollection $meetingCollection) {
 
+        if (!$meetingCollection->count()) {
+            return;
+        }
+
         // @todo clean headers up
         $headers = 'From: no-reply@example.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion() . "\r\n" .
