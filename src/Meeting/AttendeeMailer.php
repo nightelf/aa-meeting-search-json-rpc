@@ -41,7 +41,12 @@ class AttendeeMailer {
     /**
      * @var integer
      */
-    const STATUS_EMAIL_NOT_SENT_MAIL_FAILURE = 4;
+    const STATUS_EMAIL_NOT_SENT_EMAIL_INVALID = 4;
+
+    /**
+     * @var integer
+     */
+    const STATUS_EMAIL_NOT_SENT_MAIL_FAILURE = 5;
 
     /**
      * @var Twig_Environment
@@ -74,6 +79,12 @@ class AttendeeMailer {
             'Content-Type: text/html; charset=utf-9' . "\r\n";
 
         foreach ($attendeeCollection as $attendee) {
+
+
+            if (!filter_var($attendee->getEmail(), FILTER_VALIDATE_EMAIL)) {
+                $attendeeMailStatus[] = [ $attendee, self::STATUS_EMAIL_NOT_SENT_EMAIL_INVALID ];
+                continue;
+            }
 
             if (!$meetingCollection->count()) {
                 $attendeeMailStatus[] = [ $attendee, self::STATUS_EMAIL_NOT_SENT_NO_MEETINGS_CITY ];
@@ -109,7 +120,8 @@ class AttendeeMailer {
         $success = [];
         $failNoResultsCity = [];
         $failNoResultsDay = [];
-        $failMailError = [];
+        $failEmailInvalidError = [];
+        $failMailConfigError = [];
         $unknown = [];
 
         foreach ($attendeeMailStatuses as $attendeeMailStatus) {
@@ -125,8 +137,11 @@ class AttendeeMailer {
                 case AttendeeMailer::STATUS_EMAIL_NOT_SENT_NO_MEETINGS_DAY:
                     $failNoResultsDay[] = [ $attendee->getName(), $attendee->getEmail() ];
                     break;
+                case AttendeeMailer::STATUS_EMAIL_NOT_SENT_EMAIL_INVALID:
+                    $failEmailInvalidError[] = [ $attendee->getName(), $attendee->getEmail() ];
+                    break;
                 case AttendeeMailer::STATUS_EMAIL_NOT_SENT_MAIL_FAILURE:
-                    $failMailError[] = [ $attendee->getName(), $attendee->getEmail() ];
+                    $failMailConfigError[] = [ $attendee->getName(), $attendee->getEmail() ];
                     break;
                 default:
                     $unknown[] = [ $attendee->getName(), $attendee->getEmail() ];
@@ -138,7 +153,8 @@ class AttendeeMailer {
         $this->printAttendeeEmailStatusesToConsoleForGroup("Email successfully sent to:", $success);
         $this->printAttendeeEmailStatusesToConsoleForGroup("No city search results. Email not sent to:", $failNoResultsCity);
         $this->printAttendeeEmailStatusesToConsoleForGroup("No day search results. Email not sent to:", $failNoResultsDay);
-        $this->printAttendeeEmailStatusesToConsoleForGroup("Email Error. Email not sent to:", $failMailError);
+        $this->printAttendeeEmailStatusesToConsoleForGroup("Email Address is invalid error. Email not sent to:", $failEmailInvalidError);
+        $this->printAttendeeEmailStatusesToConsoleForGroup("Email config error. Email not sent to:", $failMailConfigError);
         $this->printAttendeeEmailStatusesToConsoleForGroup("Email status not known for:", $unknown);
     }
 
