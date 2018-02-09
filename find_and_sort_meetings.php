@@ -47,13 +47,14 @@ if (empty($user)) {
 }
 
 // parse the attendees
+$attendeeParser = AttendeeParser::build();
 try {
-    $attendeeParser = AttendeeParser::build();
+    $attendeeCollection = $attendeeParser->parseCsvFile($attendeeCsvPath);
 } catch (QuotaExceeded $e) {
     die("Google geocoding daily limit reached. Sorry folks. No attendees were emailed meeting results. Try again later.");
 }
 
-$attendeeCollection = $attendeeParser->parseCsvFile($attendeeCsvPath);
+
 
 // Create the client, get results and mail
 $meetingClient = MeetingClient::build($user, $pass);
